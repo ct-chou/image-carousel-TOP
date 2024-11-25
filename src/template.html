@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown Menu</title>
+    <title>Image Carousel</title>
 </head>
 <body>
-    
+    <div class="carousel-container">
+        <div class="slide current">
+            <div class="number-text">1 / 4</div>
+            <img src="../images/image_1.jpg" alt="Corgi 1">
+            <div class="text">Caption One</div>
+        </div>
+        <div class="slide hide">
+            <div class="number-text">2 / 4</div>
+            <img src="../images/image_2.jpg" alt="Corgi 2">
+            <div class="text">Caption Two</div>
+
+        </div>
+        <div class="slide hide">
+            <div class="number-text">3 / 4</div>
+            <img src="../images/image_3.jpg" alt="Corgi 3">
+            <div class="text">Caption Three</div>
+
+        </div>
+        <div class="slide hide">
+            <div class="number-text">4 / 4</div>
+            <img src="../images/image_4.jpg" alt="Corgi 4">
+            <div class="text">Caption Four</div>
+        </div>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
+    <div class="navi-dots">
+        <span class="dot active"></span>
+        <span class="dot" ></span>
+        <span class="dot" ></span>
+        <span class="dot" ></span>
+    </div>
 </body>
 </html>
