@@ -3,6 +3,8 @@ import "./style.css";
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
 
+let slideInterval;
+
 const nextDivSibling =(element) => {
     let sibling = element.nextElementSibling;
     while (sibling) {
@@ -46,6 +48,32 @@ const refreshDot = (index) => {
     newActiveDot.classList.add("active");
 }
 
+const rotateSlide = () => {
+    const current = document.querySelector(".current");
+    const next = nextDivSibling(current);
+
+    current.classList.remove("current");
+    current.classList.add("hide");
+
+    if (next) {
+        next.classList.add("current");
+        next.classList.remove("hide");
+        const index = getChildIndex(next);
+        refreshDot(index);
+    } else {
+        const carouselContainer = document.querySelector(".carousel-container");
+        const first = carouselContainer.firstElementChild;
+        first.classList.add("current");
+        first.classList.remove("hide");
+        refreshDot(0);
+    }
+};
+
+const resetInterval = () => {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(rotateSlide, 5000);
+}
+
 nextBtn.addEventListener("click", () => {
     const current = document.querySelector(".current");
     const next = nextDivSibling(current);
@@ -60,6 +88,7 @@ nextBtn.addEventListener("click", () => {
     } else {
         console.log("No subsequent image");
     }
+    resetInterval();
 });
 
 prevBtn.addEventListener("click", () => {
@@ -76,6 +105,7 @@ prevBtn.addEventListener("click", () => {
     } else {
         console.log("No previous image");
     }
+    resetInterval();
 });
 
 const dots = document.querySelectorAll(".dot");
@@ -92,3 +122,5 @@ dots.forEach((dot, index) => {
         refreshDot(index);
     });
 });
+
+slideInterval = setInterval(rotateSlide, 5000);
